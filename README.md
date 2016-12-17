@@ -34,3 +34,19 @@ const httpsRedirectConfig = (app)=>{
 }
 export default httpsRedirectConfig;
 ```
+###6 Introducing to HTTP Strict Transport Security
+####HTTP strict transport security  
+HTTP header to notify supporting browsers that future requests to this site should be made over HTTPS
+
+
+###7 Implementing the HSTS Header
+responseHeaderConfig.js
+```
+const responseHeaderConfig = (app) => {
+  app.use((req,res,next)=>{
+    const maxAge = 60*60*24*365;
+    res.set("Strict-Transport-Security",`max-age=${maxAge}; includeSubdomains; preload`);
+    next();
+  })
+}
+```

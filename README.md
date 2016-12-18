@@ -49,4 +49,17 @@ const responseHeaderConfig = (app) => {
     next();
   })
 }
+export default responseHeaderConfig;
+```
+or using helmet
+```
+import helmet from "helmet";
+const responseHeaderConfig  (app) =>{
+  app.use(helmet.hsts({
+    maxAge:100*24,
+    includeSubdomains:true,
+    preload:true
+  })
+}
+export default responseHeaderConfig;
 ```
